@@ -18,6 +18,9 @@ export const HeadingName = styled(Text)`
   line-height: 1.4;
   font-size: 4rem;
   font-weight: bold;
+  @media screen and (max-width: 850px) {
+    font-size: 2rem;
+  }
   @media screen and (max-width: 768px) {
     font-size: 2rem;
   }
@@ -43,6 +46,7 @@ export const FlexContainerHomeProfile = styled(Flex)`
   @media screen and (max-width: 768px) {
     width: 80%;
     flex-direction: column;
+    margin: 2rem auto 0 auto;
   }
 `;
 

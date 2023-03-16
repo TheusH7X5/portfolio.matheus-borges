@@ -25,7 +25,7 @@ export const Home = () => {
         {colorMode === "light" ? (
           <ContainerFlexImages>
             <AvatarIcon
-              size="lg"
+              size={"lg"}
               name="Matheus Borges"
               src="https://github.com/theusH7X5.png"
               colorMode={colorMode}
@@ -33,7 +33,7 @@ export const Home = () => {
           </ContainerFlexImages>
         ) : (
           <AvatarIcon
-            size="lg"
+            size={"lg"}
             name="Matheus Borges"
             src="https://github.com/theusH7X5.png"
             colorMode={colorMode}
@@ -65,29 +65,31 @@ export const Home = () => {
           )}
         </NameAndRole>
       </FlexContainerHomeProfile>
-      <TextHome
-        text="Profissional em transição para área de Tecnologia da Informação, com
+      <Box mt="1rem">
+        <TextHome
+          text="Profissional em transição para área de Tecnologia da Informação, com
        habilitação para atuação como Desenvolvedor Web FullStack, com
        atendimento e levantamento de requisitos de clientes internos e
        externos, conhecimento em React.js, JavaScript, CSS, HTML, Next.js,
        Node.js, Typescript, MySQL, Laravel, PHP, Docker, AWS, API, RESTful e
        Google Worskpace."
-      />
-      <TextHome
-        text="Construção de relacionamento com equipes, fornecedores de tecnologias,
+        />
+        <TextHome
+          text="Construção de relacionamento com equipes, fornecedores de tecnologias,
         prestadores de serviços e clientes, com alinhamento para atendimento de
         prazos e qualidade nas soluções."
-      />
-      <TextHome
-        text="Experiência em Vendas, com fortes
+        />
+        <TextHome
+          text="Experiência em Vendas, com fortes
         habilidades ao trabalhar em equipe, resiliência, assumir riscos,
         networking, domínio das técnicas de storytellin e de criar rapport."
-      />
-      <TextHome
-        text="Habilidades de comunicação interpessoal, monitoramento de prazos no
+        />
+        <TextHome
+          text="Habilidades de comunicação interpessoal, monitoramento de prazos no
         desenvolvimento de projetos, desenvolvimento de equipes e estruturação
         de departamentos com foco em eficiência."
-      />
+        />
+      </Box>
       <IconFooter colorMode={colorMode} />
     </Box>
   );
