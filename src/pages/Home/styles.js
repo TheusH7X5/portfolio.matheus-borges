@@ -48,8 +48,8 @@ export const FlexContainerHomeProfile = styled(Flex)`
 
 export const ContainerFlexImages = styled(Box)`
   display: flex;
-  align-items:center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   width: 35%;
   position: relative;
   &:before {
@@ -58,19 +58,27 @@ export const ContainerFlexImages = styled(Box)`
     left: -40%;
     z-index: 2;
     display: block;
-    content: '';
+    content: "";
     width: 50%;
     height: 100%;
-    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    background: -webkit-linear-gradient(
+      left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
     -webkit-transform: skewX(-5deg);
     transform: skewX(-5deg);
     -webkit-animation: shine all ease 3s;
     animation: shine 5s;
   }
-  img{
+  img {
     overflow: hidden;
-    float: left; 
+    float: left;
   }
   @-webkit-keyframes shine {
     100% {
@@ -138,5 +146,41 @@ export const LdsEllipsis = styled.div`
     100% {
       transform: translate(24px, 0);
     }
+  }
+`;
+
+export const ButtonDownload = styled.button`
+  background: none;
+  border: ${(props) =>
+    props.colorMode === "light" ? "2px solid #01B4AF" : "2px solid #2C98D8"};
+  font-family: "Lora", serif;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  min-width: 150px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 999;
+  &:hover {
+    color: #fff;
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: ${(props) =>
+      props.colorMode === "light" ? "#01B4AF" : "#2C98D8"};
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    transform: scaleX(0);
   }
 `;
