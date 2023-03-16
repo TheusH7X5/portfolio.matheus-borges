@@ -15,10 +15,12 @@ export const Contacts = () => {
 
   return (
     <Flex
+      w="100%"
       align="center"
       justify="center"
       flexDir="column"
       h="calc(100vh - 80px)"
+      pt='2rem'
     >
       <AvatarIcon
         size="sm"
@@ -27,7 +29,12 @@ export const Contacts = () => {
         colorMode={colorMode}
       />
       <form>
-        <VStack my="2rem" spacing={4} align="stretch" w="100%" maxW='400px'>
+        <VStack
+          my="2rem"
+          spacing={4}
+          align="center"
+          w="390px"
+        >
           <Input
             name="name"
             type="text"
@@ -64,6 +71,7 @@ export const Contacts = () => {
             bgColor={colorMode === "light" ? "#01B4AF" : "#2C98D8"}
             mx="auto"
             color="white"
+            w='100px'
             _hover={
               colorMode === "light"
                 ? { bgColor: "#01B4AF", opacity: 0.8 }

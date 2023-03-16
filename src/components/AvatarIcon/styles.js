@@ -35,20 +35,20 @@ export const Picture = styled(motion.img)`
       switch (size) {
         case "sm":
           return css`
-            height: 20vw;
-            width: 20vw;
+            height: 15vw;
+            width: 15vw;
             padding: 2px;
           `;
         case "md":
           return css`
-            height: 20vw;
-            width: 20vw;
+            height: 15vw;
+            width: 15vw;
             padding: 2px;
           `;
         case "lg":
           return css`
-            height: 20vw;
-            width: 20vw;
+            height: 15vw;
+            width: 15vw;
             padding: 2px;
           `;
         default:
