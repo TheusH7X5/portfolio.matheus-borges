@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FlexLink, NavItem } from './styles';
 
-export const Navbar = ({ location, colorMode, mobileView }) => {
+export const Navbar = ({ location, colorMode }) => {
   return (
     <FlexLink>
       <Link to="/">

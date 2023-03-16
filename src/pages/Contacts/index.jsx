@@ -5,14 +5,59 @@ import {
   Input,
   Textarea,
   useColorMode,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { AvatarIcon } from "../../components/AvatarIcon";
 import { IconFooter } from "../../components/IconFooter";
+import { LdsEllipsis } from "../Home/styles";
+import emailjs from "emailjs-com";
 
 export const Contacts = () => {
   const { colorMode } = useColorMode();
+  const toast = useToast();
+  const [loadingButton, setloadingButton] = useState(false);
+  const [inputName, setInputName] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputSubject, setInputSubject] = useState("");
+  const [inputMessage, setInputMessage] = useState("");
+
+  function SendEmail(e) {
+    e.preventDefault();
+    setloadingButton(true);
+    const timer = setTimeout(function () {
+      emailjs
+        .sendForm(
+          "emailMessage",
+          "template_f8kr2v2",
+          e.target,
+          "LyBRajpOIZDBu-G6h"
+        )
+        .then(
+          (result) => {
+            toast({
+              title: "Mensagem enviada com sucesso!",
+              description: "Aguarde o retorno.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+              position: "top",
+            });
+          },
+          (error) => {
+            console.log(error.text);
+            setloadingButton(false);
+          }
+        );
+      setloadingButton(false);
+      setInputName("");
+      setInputEmail("");
+      setInputSubject("");
+      setInputMessage("");
+      clearTimeout(timer);
+    }, 500);
+  }
 
   return (
     <Flex
@@ -30,9 +75,11 @@ export const Contacts = () => {
           colorMode={colorMode}
         />
       </Box>
-      <form>
+      <form onSubmit={SendEmail}>
         <VStack my="2rem" spacing={4} align="center" w="390px">
-          <Input  
+          <Input
+            value={inputName}
+            onChange={(e) => setInputName(e.target.value)}
             w="390px"
             name="name"
             type="text"
@@ -42,15 +89,19 @@ export const Contacts = () => {
             placeholder="Nome"
           />
           <Input
+            value={inputEmail}
+            onChange={(e) => setInputEmail(e.target.value)}
             w="390px"
             type="text"
-            name="Assunto"
+            name="subject"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
             }
             placeholder="Assunto"
           />
           <Input
+            value={inputSubject}
+            onChange={(e) => setInputSubject(e.target.value)}
             w="390px"
             type="text"
             name="email"
@@ -60,15 +111,18 @@ export const Contacts = () => {
             placeholder="E-mail"
           />
           <Textarea
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
             w="390px"
             type="text"
-            name="mensagem"
+            name="message"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
             }
             placeholder="Mensagem"
           />
           <Button
+            type="submit"
             bgColor={colorMode === "light" ? "#01B4AF" : "#2C98D8"}
             mx="auto"
             color="white"
@@ -79,7 +133,16 @@ export const Contacts = () => {
                 : { bgColor: "#2C98D8", opacity: 0.8 }
             }
           >
-            Enviar
+            {loadingButton ? (
+              <LdsEllipsis class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </LdsEllipsis>
+            ) : (
+              <span>Enviar</span>
+            )}
           </Button>
         </VStack>
       </form>
