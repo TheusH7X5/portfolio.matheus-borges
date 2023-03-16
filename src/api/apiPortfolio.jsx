@@ -7,7 +7,7 @@ export const apiPortfolio = [
   },
   {
     id: 1,
-    src: "https://i.ibb.co/h8WVGJT/home-ignews.gif",
+    src: "https://i.ibb.co/QmNMW3x/home-ignews.gif",
     alt: "home ignews",
     link: "https://github.com/TheusH7X5/ignewsH7X5",
   },
