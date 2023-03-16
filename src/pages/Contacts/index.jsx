@@ -22,9 +22,9 @@ export const Contacts = () => {
       flexDir="column"
       h="calc(100vh - 80px)"
     >
-      <Box marginTop='-20px'>
+      <Box marginTop={["-20px", 0, 0]}>
         <AvatarIcon
-          size="lg"
+          size="md"
           name="Matheus Borges"
           src="https://github.com/theusH7X5.png"
           colorMode={colorMode}
@@ -32,7 +32,8 @@ export const Contacts = () => {
       </Box>
       <form>
         <VStack my="2rem" spacing={4} align="center" w="390px">
-          <Input
+          <Input  
+            w="390px"
             name="name"
             type="text"
             border={
@@ -41,6 +42,7 @@ export const Contacts = () => {
             placeholder="Nome"
           />
           <Input
+            w="390px"
             type="text"
             name="Assunto"
             border={
@@ -49,6 +51,7 @@ export const Contacts = () => {
             placeholder="Assunto"
           />
           <Input
+            w="390px"
             type="text"
             name="email"
             border={
@@ -57,6 +60,7 @@ export const Contacts = () => {
             placeholder="E-mail"
           />
           <Textarea
+            w="390px"
             type="text"
             name="mensagem"
             border={

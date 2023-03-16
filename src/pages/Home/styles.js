@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 export const NameAndRole = styled(motion.div)`
   padding-left: 1rem;
   width: 600px;
+  font-family: "Lora", serif;
+  
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 0.5rem;
@@ -15,6 +17,7 @@ export const HeadingName = styled(Text)`
   margin-top: 1rem;
   line-height: 1.4;
   font-size: 4rem;
+  font-weight: bold;
   @media screen and (max-width: 768px) {
     font-size: 2rem;
   }
@@ -23,6 +26,7 @@ export const TextRole = styled.h1`
   margin-top: 0.5rem;
   line-height: 1.6;
   font-size: 25px;
+  color: gray;
   @media screen and (max-width: 768px) {
     font-size: 17px;
   }

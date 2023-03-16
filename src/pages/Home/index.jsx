@@ -1,16 +1,17 @@
-import {
-  Box,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Box, Text, useColorMode } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { AvatarIcon } from "../../components/AvatarIcon";
 import { TextHome } from "../../components/TextHome";
 import { IconFooter } from "./../../components/IconFooter/index";
-import { FlexContainerHomeProfile, HeadingName, NameAndRole, TextRole } from "./styles";
+import {
+  FlexContainerHomeProfile,
+  HeadingName,
+  NameAndRole,
+  TextRole,
+} from "./styles";
 
 export const Home = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const [mobileView, setmobileView] = useState(false);
 
   useEffect(() => {
@@ -35,16 +36,13 @@ export const Home = () => {
           colorMode={colorMode}
         />
         <NameAndRole
+          colorMode={colorMode}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          <HeadingName>
-            Matheus Borges
-          </HeadingName>
-          <TextRole>
-            Desenvolvedor Full Stack
-          </TextRole>
+          <HeadingName>Matheus Borges</HeadingName>
+          <TextRole>Desenvolvedor Full Stack</TextRole>
         </NameAndRole>
       </FlexContainerHomeProfile>
       <TextHome
