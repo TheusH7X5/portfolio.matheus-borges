@@ -12,7 +12,7 @@ import {
 } from "./styles";
 
 export const Home = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const [mobileView, setmobileView] = useState(false);
 
   useEffect(() => {
@@ -30,14 +30,23 @@ export const Home = () => {
   return (
     <Box h="calc (100vh - 60px)">
       <FlexContainerHomeProfile>
-      <ContainerFlexImages>
-        <AvatarIcon
-          size="lg"
-          name="Matheus Borges"
-          src="https://github.com/theusH7X5.png"
-          colorMode={colorMode}
-        />
-        </ContainerFlexImages>
+        {colorMode === "light" ? (
+          <ContainerFlexImages>
+            <AvatarIcon
+              size="lg"
+              name="Matheus Borges"
+              src="https://github.com/theusH7X5.png"
+              colorMode={colorMode}
+            />
+          </ContainerFlexImages>
+        ) : (
+          <AvatarIcon
+            size="lg"
+            name="Matheus Borges"
+            src="https://github.com/theusH7X5.png"
+            colorMode={colorMode}
+          />
+        )}
         <NameAndRole
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
