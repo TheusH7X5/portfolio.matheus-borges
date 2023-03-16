@@ -1,6 +1,5 @@
 import {
   Button,
-  Center,
   Flex,
   Input,
   Textarea,
@@ -28,7 +27,7 @@ export const Contacts = () => {
         colorMode={colorMode}
       />
       <form>
-        <VStack my="2rem" spacing={4} align="stretch" w="400px">
+        <VStack my="2rem" spacing={4} align="stretch" w="100%" maxW='400px'>
           <Input
             name="name"
             type="text"

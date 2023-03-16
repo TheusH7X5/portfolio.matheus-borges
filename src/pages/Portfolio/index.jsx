@@ -36,7 +36,7 @@ export const Portfolio = () => {
 
   return (
     <Box>
-      <Box w="1000px" mx="auto" mb="1rem">
+      <Box w="100%" maxW='1000px' mx="auto" mb="1rem">
         <Flex w="100%" justify="center">
           <AvatarIcon
             size="md"
@@ -51,9 +51,10 @@ export const Portfolio = () => {
         mb="2rem"
         initial="hidden"
         animate="visible"
-        templateColumns="repeat(3, 1fr)"
+        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
         h="auto"
-        w="1000px"
+        w="98%"
+        maxW='1000px'
         mx="auto"
         gap={6}
         variants={containerVariants}

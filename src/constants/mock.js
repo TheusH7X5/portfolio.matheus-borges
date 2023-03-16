@@ -31,7 +31,7 @@ export const techs = [
   },
   {
     id: 5,
-    name: "TypesCript",
+    name: "TypeScript",
     yValues: [0, 80],
     scale: 0.7,
   },

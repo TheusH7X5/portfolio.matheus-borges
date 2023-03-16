@@ -1,26 +1,32 @@
 import { Flex, IconButton } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Navbar } from "../Navbar";
 import { useLocation } from "react-router-dom";
+import { FlexContainer } from "../Navbar/styles";
 
 export const Header = ({colorMode, toggleColorMode }) => {
   const location = useLocation();
+  const [mobileView, setmobileView] = useState(false)
+
+  useEffect(() => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      setmobileView(true);
+    } else {
+      setmobileView(false);
+    }
+  }, [])
+
 
   return (
-    <Flex
-      mb="1rem"
-      px="2rem"
-      justify="space-between"
-      w="100%"
-      h="60px"
+    <FlexContainer     
       boxShadow={
         colorMode === "light"
           ? "#C9FCFB 0px 10px 20px,#99ECEA 0px 6px 6px"
           : "#3E9FDF 0px 10px 20px,#2C98D8 0px 6px 6px"
       }
     >
-      <Navbar colorMode={colorMode} location={location} />
+      <Navbar mobileView={mobileView} colorMode={colorMode} location={location} />
       <IconButton
         my="auto"
         bgColor={colorMode === "light" ? "white" : "#1A202C"}
@@ -32,6 +38,6 @@ export const Header = ({colorMode, toggleColorMode }) => {
         onClick={toggleColorMode}
         icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
       />
-    </Flex>
+    </FlexContainer>
   );
 };

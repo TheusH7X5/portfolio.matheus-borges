@@ -1,16 +1,11 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { NavItem } from './styles';
+import { FlexLink, NavItem } from './styles';
 
-export const Navbar = ({ location, colorMode }) => {
+export const Navbar = ({ location, colorMode, mobileView }) => {
   return (
-    <Flex
-      as="nav"
-      w="50%"
-      my="auto"
-      justify="space-around"
-    >
+    <FlexLink>
       <Link to="/">
         <NavItem colorMode={colorMode} isSelected={location.pathname === "/"}>Home</NavItem>
       </Link>
@@ -27,6 +22,6 @@ export const Navbar = ({ location, colorMode }) => {
           Contact
         </NavItem>
       </Link>
-    </Flex>
+    </FlexLink>
   );
 };

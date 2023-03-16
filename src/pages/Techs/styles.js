@@ -73,6 +73,68 @@ export const ParallaxContainer = styled(motion.div)`
       opacity: 0.6;
       font-size: 52px;
     }
+    @media screen and (max-width: 768px) {
+      &:nth-child(1) {
+        top: 10%;
+        left: 50%;
+        opacity: 0.2;
+        font-size: 20px;
+      }
+      &:nth-child(2) {
+        top: 70%;
+        left: 30%;
+        opacity: 0.8;
+        font-size: 30px;
+      }
+      &:nth-child(3) {
+        top: 50%;
+        left: 0%;
+        opacity: 0.8;
+        font-size: 32px;
+      }
+      &:nth-child(4) {
+        top: 35%;
+        left: 35%;
+        opacity: 1;
+        font-size: 45px;
+      }
+      &:nth-child(5) {
+        top: 43%;
+        left: 40%;
+        opacity: 0.7;
+        font-size: 30px;
+      }
+      &:nth-child(6) {
+        top: 60%;
+        left: 60%;
+        opacity: 0.8;
+        font-size: 32px;
+      }
+      &:nth-child(7) {
+        top: 30%;
+        left: 10%;
+        opacity: 0.5;
+        font-size: 32px;
+      }
+      &:nth-child(8) {
+        top: 60%;
+        left: 20%;
+        opacity: 0.6;
+        font-size: 28px;
+      }
+      &:nth-child(9) {
+        top: 13%;
+        left: 65%;
+        opacity: 0.6;
+        font-size: 42px;
+      }
+      &:nth-child(10) {
+        top: 27%;
+        left: 55%;
+        opacity: 0.6;
+        font-size: 42px;
+      }
+    }
   }
 
   @keyframes appear {
