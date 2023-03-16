@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   Input,
@@ -20,21 +21,17 @@ export const Contacts = () => {
       justify="center"
       flexDir="column"
       h="calc(100vh - 80px)"
-      pt='2rem'
     >
-      <AvatarIcon
-        size="sm"
-        name="Matheus Borges"
-        src="https://github.com/theusH7X5.png"
-        colorMode={colorMode}
-      />
+      <Box marginTop='-20px'>
+        <AvatarIcon
+          size="lg"
+          name="Matheus Borges"
+          src="https://github.com/theusH7X5.png"
+          colorMode={colorMode}
+        />
+      </Box>
       <form>
-        <VStack
-          my="2rem"
-          spacing={4}
-          align="center"
-          w="390px"
-        >
+        <VStack my="2rem" spacing={4} align="center" w="390px">
           <Input
             name="name"
             type="text"
@@ -71,7 +68,7 @@ export const Contacts = () => {
             bgColor={colorMode === "light" ? "#01B4AF" : "#2C98D8"}
             mx="auto"
             color="white"
-            w='100px'
+            w="100px"
             _hover={
               colorMode === "light"
                 ? { bgColor: "#01B4AF", opacity: 0.8 }
