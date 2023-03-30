@@ -3,12 +3,11 @@ import App from "./../App";
 
 import { createBrowserRouter } from "react-router-dom";
 
-import { Home } from "../pages/Home";
+import Home from "../pages/Home";
 import { Techs } from "../pages/Techs";
-import { Portfolio } from "../pages/Portfolio";
+import Portfolio from "../pages/Portfolio";
 import { ErrorPage } from "../pages/ErrorPages";
-import { Contacts } from "../pages/Contacts";
-import { useColorMode } from "@chakra-ui/react";
+import Contacts from "../pages/Contacts";
 
 const Router = createBrowserRouter([
   {
@@ -16,7 +15,6 @@ const Router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      
       {
         path: "/",
         element: <Home />,
@@ -35,6 +33,7 @@ const Router = createBrowserRouter([
       },
     ],
   },
+
 ]);
 
 export default Router;

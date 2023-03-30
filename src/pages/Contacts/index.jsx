@@ -13,8 +13,10 @@ import { AvatarIcon } from "../../components/AvatarIcon";
 import { IconFooter } from "../../components/IconFooter";
 import { LdsEllipsis } from "../Home/styles";
 import emailjs from "emailjs-com";
+import { imgProfileGitHub, nameProfileGitHub } from "./../../api/urls";
+import { connect } from "react-redux";
 
-export const Contacts = () => {
+const Contacts = ({ languageReducer }) => {
   const { colorMode } = useColorMode();
   const toast = useToast();
   const [loadingButton, setloadingButton] = useState(false);
@@ -64,46 +66,47 @@ export const Contacts = () => {
       w="100%"
       align="center"
       justify="center"
+      mx="auto"
       flexDir="column"
       h="calc(100vh - 80px)"
     >
       <Box marginTop={["-20px", 0, 0]}>
         <AvatarIcon
           size="md"
-          name="Matheus Borges"
-          src="https://github.com/theusH7X5.png"
+          name={nameProfileGitHub}
+          src={imgProfileGitHub}
           colorMode={colorMode}
         />
       </Box>
       <form onSubmit={SendEmail}>
-        <VStack my="2rem" spacing={4} align="center" w="390px">
+        <VStack mx="auto" my="2rem" spacing={4} align="center" w="350px">
           <Input
             value={inputName}
             onChange={(e) => setInputName(e.target.value)}
-            w="390px"
+            w="350px"
             name="name"
             type="text"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
             }
-            placeholder="Nome"
+            placeholder={languageReducer ? "Nome" : "Name"}
           />
           <Input
             value={inputEmail}
             onChange={(e) => setInputEmail(e.target.value)}
-            w="390px"
+            w="350px"
             type="text"
             name="subject"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
             }
-            placeholder="Assunto"
+            placeholder={languageReducer ? "Assunto" : "Subject"}
           />
           <Input
             value={inputSubject}
             onChange={(e) => setInputSubject(e.target.value)}
-            w="390px"
-            type="text"
+            w="350px"
+            type="email"
             name="email"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
@@ -113,13 +116,13 @@ export const Contacts = () => {
           <Textarea
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            w="390px"
+            w="350px"
             type="text"
             name="message"
             border={
               colorMode === "light" ? "1px solid #01B4AF" : "1px solid #2C98D8"
             }
-            placeholder="Mensagem"
+            placeholder={languageReducer ? "Mensagem" : "Message"}
           />
           <Button
             type="submit"
@@ -134,14 +137,14 @@ export const Contacts = () => {
             }
           >
             {loadingButton ? (
-              <LdsEllipsis class="lds-ellipsis">
+              <LdsEllipsis className="lds-ellipsis">
                 <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
               </LdsEllipsis>
             ) : (
-              <span>Enviar</span>
+              <span>{languageReducer ? "Enviar" : "Send"}</span>
             )}
           </Button>
         </VStack>
@@ -150,3 +153,7 @@ export const Contacts = () => {
     </Flex>
   );
 };
+
+export default connect((state) => ({ languageReducer: state.languageReducer }))(
+  Contacts
+);

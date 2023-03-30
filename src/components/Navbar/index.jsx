@@ -1,25 +1,38 @@
-import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FlexLink, NavItem } from './styles';
+import { FlexLink, NavItem } from "./styles";
 
-export const Navbar = ({ location, colorMode }) => {
+export const Navbar = ({ location, colorMode, languageReducer }) => {
+
   return (
     <FlexLink>
       <Link to="/">
-        <NavItem colorMode={colorMode} isSelected={location.pathname === "/"}>Home</NavItem>
+        <NavItem colorMode={colorMode} isSelected={location.pathname === "/"}>
+          {languageReducer ? 'Início' : 'Home'}
+        </NavItem>
       </Link>
       <Link to="/techs">
-        <NavItem colorMode={colorMode} isSelected={location.pathname === "/techs"}>Tecnology</NavItem>
+        <NavItem
+          colorMode={colorMode}
+          isSelected={location.pathname === "/techs"}
+        >
+          {languageReducer ? 'Tecnologia' : 'Tecnology'}
+        </NavItem>
       </Link>
       <Link to="/portfolio">
-        <NavItem colorMode={colorMode} isSelected={location.pathname === "/portfolio"}>
-          Portfolio
+        <NavItem
+          colorMode={colorMode}
+          isSelected={location.pathname === "/portfolio"}
+        >
+          {languageReducer ? 'Portfólio' : 'Portfolio'}
         </NavItem>
       </Link>
       <Link to="/contacts">
-        <NavItem colorMode={colorMode} isSelected={location.pathname === "/contacts"}>
-          Contact
+        <NavItem
+          colorMode={colorMode}
+          isSelected={location.pathname === "/contacts"}
+        >
+          {languageReducer ? 'Contato' : 'Contact'}
         </NavItem>
       </Link>
     </FlexLink>

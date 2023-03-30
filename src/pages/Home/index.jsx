@@ -1,7 +1,15 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import {
+  downloadCurriculumLink,
+  imgProfileGitHub,
+  nameProfileGitHub,
+  urlDownload,
+} from "../../api/urls";
 import { AvatarIcon } from "../../components/AvatarIcon";
 import { TextHome } from "../../components/TextHome";
+import { languageEn, languagePtBr } from "../../constants/stringsLanguage";
 import { IconFooter } from "./../../components/IconFooter/index";
 import {
   ButtonDownload,
@@ -12,10 +20,7 @@ import {
   TextRole,
 } from "./styles";
 
-const urlDownload =
-  "https://drive.google.com/uc?export=download&id=1RqFnb82-EDWIsLS8oLACLzmSKWuAWd0y";
-
-export const Home = () => {
+const Home = ({ languageReducer }) => {
   const { colorMode } = useColorMode();
   const [download, setDownload] = useState("");
 
@@ -26,16 +31,16 @@ export const Home = () => {
           <ContainerFlexImages>
             <AvatarIcon
               size={"lg"}
-              name="Matheus Borges"
-              src="https://github.com/theusH7X5.png"
+              name={nameProfileGitHub}
+              src={imgProfileGitHub}
               colorMode={colorMode}
             />
           </ContainerFlexImages>
         ) : (
           <AvatarIcon
             size={"lg"}
-            name="Matheus Borges"
-            src="https://github.com/theusH7X5.png"
+            name={nameProfileGitHub}
+            src={imgProfileGitHub}
             colorMode={colorMode}
           />
         )}
@@ -44,12 +49,11 @@ export const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          <HeadingName>Matheus Borges</HeadingName>
-          <TextRole>Desenvolvedor Full Stack</TextRole>
-          <a
-            href="https://drive.google.com/uc?export=download&id=1RqFnb82-EDWIsLS8oLACLzmSKWuAWd0y"
-            style={{ textDecoration: "none" }}
-          >
+          <HeadingName>{nameProfileGitHub}</HeadingName>
+          <TextRole>
+            {languageReducer ? languagePtBr.TextRole : languageEn.TextRole}
+          </TextRole>
+          <a href={downloadCurriculumLink} style={{ textDecoration: "none" }}>
             <ButtonDownload
               onClick={() => {
                 setDownload(urlDownload);
@@ -57,7 +61,9 @@ export const Home = () => {
               }}
               colorMode={colorMode}
             >
-              Currículo
+              {languageReducer
+                ? languagePtBr.curriculum
+                : languageEn.curriculum}
             </ButtonDownload>
           </a>
           {download && (
@@ -65,32 +71,20 @@ export const Home = () => {
           )}
         </NameAndRole>
       </FlexContainerHomeProfile>
-      <Box mt="1rem">
-        <TextHome
-          text="Profissional em transição para área de Tecnologia da Informação, com
-       habilitação para atuação como Desenvolvedor Web FullStack, com
-       atendimento e levantamento de requisitos de clientes internos e
-       externos, conhecimento em React.js, JavaScript, CSS, HTML, Next.js,
-       Node.js, Typescript, MySQL, Laravel, PHP, Docker, AWS, API, RESTful e
-       Google Worskpace."
-        />
-        <TextHome
-          text="Construção de relacionamento com equipes, fornecedores de tecnologias,
-        prestadores de serviços e clientes, com alinhamento para atendimento de
-        prazos e qualidade nas soluções."
-        />
-        <TextHome
-          text="Experiência em Vendas, com fortes
-        habilidades ao trabalhar em equipe, resiliência, assumir riscos,
-        networking, domínio das técnicas de storytellin e de criar rapport."
-        />
-        <TextHome
-          text="Habilidades de comunicação interpessoal, monitoramento de prazos no
-        desenvolvimento de projetos, desenvolvimento de equipes e estruturação
-        de departamentos com foco em eficiência."
-        />
+      <Box mb="3rem" mt="1rem">
+        {languageReducer
+          ? languagePtBr.text.map((text, index) => {
+              return <TextHome key={index} text={text} />;
+            })
+          : languageEn.text.map((text, index) => {
+              return <TextHome key={index} text={text} />;
+            })}
       </Box>
       <IconFooter colorMode={colorMode} />
     </Box>
   );
 };
+
+export default connect((state) => ({ languageReducer: state.languageReducer }))(
+  Home
+);

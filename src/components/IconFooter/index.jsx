@@ -29,12 +29,12 @@ export const IconFooter = ({ colorMode }) => {
         link="https://www.linkedin.com/in/matheus-borges-h7x5/"
         Icon={AiFillLinkedin}
       />
-      <IconLink
+      {/* <IconLink
         location={location}
         colorMode={colorMode}
         link="https://www.instagram.com/theush7x5/"
         Icon={AiOutlineInstagram}
-      />
+      /> */}
     </FlexFooter>
   );
 };

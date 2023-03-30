@@ -38,11 +38,14 @@ export const TextRole = styled.h1`
 export const FlexContainerHomeProfile = styled(Flex)`
   height: 250px;
   align-items: center;
-  margin: 0 auto;
   width: 80%;
   max-width: 1000px;
+  margin: 50px auto 0 auto;
   justify-content: space-around;
 
+  @media screen and (max-width: 1366px) {
+    margin: 0 auto;
+  }
   @media screen and (max-width: 768px) {
     width: 80%;
     flex-direction: column;

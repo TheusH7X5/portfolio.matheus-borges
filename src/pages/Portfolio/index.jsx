@@ -9,10 +9,10 @@ import {
 import React from "react";
 import { AvatarIcon } from "../../components/AvatarIcon";
 import { IconFooter } from "../../components/IconFooter";
-import { apiPortfolio } from "./../../api/apiPortfolio";
 import { motion } from "framer-motion";
+import { connect } from "react-redux";
 
-export const Portfolio = () => {
+const Portfolio = ({ apiPortfolio }) => {
   const { colorMode } = useColorMode();
   const GridMotion = motion(Grid);
   const GridItemMotion = motion(GridItem);
@@ -36,7 +36,7 @@ export const Portfolio = () => {
 
   return (
     <Box>
-      <Box w="100%" maxW='1000px' mx="auto" mb="1rem">
+      <Box w="100%" maxW="1000px" mx="auto" mb="1rem">
         <Flex w="100%" justify="center">
           <AvatarIcon
             size="md"
@@ -54,7 +54,7 @@ export const Portfolio = () => {
         templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
         h="auto"
         w="98%"
-        maxW='1000px'
+        maxW="1000px"
         mx="auto"
         gap={6}
         variants={containerVariants}
@@ -94,3 +94,5 @@ export const Portfolio = () => {
     </Box>
   );
 };
+
+export default connect((state) => ({ apiPortfolio: state.apiPortfolio }))(Portfolio);
